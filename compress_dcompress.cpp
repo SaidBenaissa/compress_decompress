@@ -25,7 +25,7 @@ std::string &output_file) {
             input.open(it->path().string(), std::ios::binary);
 
             // Read the file into the buffer
-            buffer.assign(std::istreambuf_iterator<char>(input),std::istreambuf_iterator<char>());
+            buffer.assign(std::istreambuf_iterator<char>(input), std::istreambuf_iterator<char>());
 
             // Compress the buffer
             uLong compressed_size = compressBound(buffer.size());
@@ -34,13 +34,14 @@ std::string &output_file) {
             std::vector<char> compressed_buffer(compressed_size);
 
             // Compress the data, the destination buffer must be large enough to hold the compressed data
-            compress(reinterpret_cast<Bytef *>(compressed_buffer.data()),&compressed_size, reinterpret_cast<const Bytef *>(buffer.data()),buffer.size());
+            compress(reinterpret_cast<Bytef *>(compressed_buffer.data()), &compressed_size,
+                     reinterpret_cast<const Bytef *>(buffer.data()), buffer.size());
 
             // Write the file path to the output file, followed by the compressed size and the compressed data
             output.write(it->path().string().c_str(), it->path().string().size() + 1);
 
             // Write the compressed size to the output file, followed by the compressed data, the size is needed to decompress the data later
-            output.write(reinterpret_cast<const char *>(&compressed_size),sizeof(compressed_size));
+            output.write(reinterpret_cast<const char *>(&compressed_size), sizeof(compressed_size));
 
             // Write the compressed data to the output file, the size is needed to decompress the data later, the size is needed to decompress the data later
             output.write(compressed_buffer.data(), compressed_size);
