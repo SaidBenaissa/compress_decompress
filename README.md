@@ -122,23 +122,34 @@ install(TARGETS compress_dcompress RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
    ```
 The compiled binary `compress_decompress` will be created in the `build` directory.
 
-## Usage
+## General Usage
 #### Compress a directory 
    ```bash
-   ./compress_decompress compress /path/to/input/directory /path/to/output/compressed_file
+   cd cmake-build-release/
+   compress_decompress compress /path/to/input/directory /path/to/output/compressed_file
    ```
 #### Decompress a directory 
-    ```bash
-    ./compress_decompress decompress /path/to/input/compressed_file /path/to/output/directory
-    ```
-## Example
-#### Compress a directory 
    ```bash
-   ./compress_decompress compress test_directory compressed_directory.zip
+   cd cmake-build-release/
+   compress_decompress decompress /path/to/input/compressed_file /path/to/output/directory
+  ```
+
+## My test example
+#### Compress a directory
+1. Click on Run green button in README.md
+   ```bash 
+   cd cmake-build-release/
+   compress_dcompress compress ../test_directory ../compressed_directory.zip 
    ```
+2. Check you can see `compressed_directory.zip` in cmake-build-release directory created by `tesr_directory`
+
 #### Decompress a directory 
-    ```bash
-    ./compress_decompress decompress compressed_directory.zip decompressed_directory
-    ```
+1. Click on Run green button in README.md
+   ```bash
+    cd cmake-build-release/
+    compress_dcompress decompress ../compressed_directory.zip ../restored_directory 
+   ```
+2. Check you can see `restored_directory` in cmake-build-release directory created by `compressed_directory.zip`
+
 
 
