@@ -1,6 +1,4 @@
-# Time Traveler's Compressor
-
-## compress_decompress
+## compress_decompress application 
 
 A console application designed to help a time traveler, who got stuck in the past in the dinosaur era, send logs from a malfunctioning time machine to engineers in the present. The application must efficiently compress and decompress logs to minimize resource usage and data size. This console application is built using C++, zlib, and Boost Filesystem library.
 
